@@ -1,6 +1,5 @@
 console.log("JS pieslēgts un darbojas");
 
-// Atlasām elementus
 const text = document.getElementById("text");
 const input = document.getElementById("nameInput");
 const addBtn = document.getElementById("addBtn");
@@ -8,13 +7,20 @@ const removeBtn = document.getElementById("removeBtn");
 
 let newElement = null;
 
-// input notikums – maina tekstu
+function parbauditUnParadiTekstu(vards) {
+    if (vards === "") {
+        text.textContent = "Lūdzu, ievadi savu vārdu!";
+        text.style.color = "red";
+    } else {
+        text.textContent = "Sveiki, " + vards + "!";
+        text.style.color = "blue";
+    }
+}
+
 input.addEventListener("input", function () {
-    text.textContent = "Sveiki, " + this.value + "!";
-    text.style.color = "blue";
+    parbauditUnParadiTekstu(this.value);
 });
 
-// click notikums – izveido jaunu elementu
 addBtn.addEventListener("click", function () {
     if (!newElement) {
         newElement = document.createElement("p");
@@ -24,7 +30,6 @@ addBtn.addEventListener("click", function () {
     }
 });
 
-// click notikums – noņem elementu
 removeBtn.addEventListener("click", function () {
     if (newElement) {
         newElement.remove();
