@@ -2,35 +2,51 @@
 <html lang="lv">
 <head>
     <meta charset="UTF-8">
-    <title>Jauns</title>
+    <title>Mācību projekts</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>Jauns</h1>
+    <h1>Mācību projekts</h1>
 </header>
 
 <main>
-    <p id="text">Šis ir sākotnējais teksts.</p>
 
-    <input type="text" id="nameInput" placeholder="Ievadi savu vārdu">
+    <section class="box">
+        <h2>Teksta maiņa</h2>
+        <p id="text">Šis ir sākotnējais teksts.</p>
 
-    <br><br>
+        <input type="text" id="nameInput" placeholder="Ievadi savu vārdu">
 
-    <button id="addBtn">Pievienot elementu</button>
-    <button id="removeBtn">Noņemt elementu</button>
+        <br><br>
 
-    <hr>
+        <button id="addBtn">Pievienot elementu</button>
+        <button id="removeBtn">Noņemt elementu</button>
+    </section>
 
-    <h2>Reģistrācijas forma</h2>
 
-    <form id="myForm">
-        <input type="text" id="formName" placeholder="Vārds"><br><br>
-        <input type="text" id="email" placeholder="E-pasts"><br><br>
-        <button type="submit">Iesniegt</button>
-        <p id="error"></p>
-    </form>
+    <section class="box">
+        <h2>Reģistrācijas forma</h2>
+
+        <form id="myForm">
+            <input type="text" id="formName" placeholder="Vārds"><br><br>
+            <input type="text" id="email" placeholder="E-pasts"><br><br>
+            <button type="submit">Iesniegt</button>
+            <p id="error"></p>
+        </form>
+    </section>
+
+
+    <section class="box">
+        <h2>Produkta pasūtīšana</h2>
+
+        <input id="quantity" type="number" placeholder="Daudzums" min="1">
+        <button id="calcBtn">Aprēķināt cenu</button>
+
+        <div id="result" class="result"></div>
+    </section>
+
 </main>
 
 <footer>
