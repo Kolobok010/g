@@ -1,93 +1,48 @@
-const text = document.getElementById("text");
-const input = document.getElementById("nameInput");
-const addBtn = document.getElementById("addBtn");
-const removeBtn = document.getElementById("removeBtn");
+const registerForm = document.getElementById("registerForm");
+const nameInput = document.getElementById("name");
+const mailInput = document.getElementById("mail");
+const regMsg = document.getElementById("regMsg");
 
-let newElement = null;
+registerForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-function updateText(value) {
-    if (value === "") {
-        text.textContent = "";
+    if (nameInput.value === "" || mailInput.value === "") {
+        regMsg.textContent = "Kļūda";
+        regMsg.style.color = "red";
     } else {
-        text.textContent = "Sveiki, " + value + "!";
-    }
-}
-
-input.addEventListener("input", function () {
-    updateText(this.value);
-});
-
-addBtn.addEventListener("click", function () {
-    if (!newElement) {
-        newElement = document.createElement("p");
-        newElement.textContent = "Elements";
-        document.querySelector("main").appendChild(newElement);
-    }
-});
-
-removeBtn.addEventListener("click", function () {
-    if (newElement) {
-        newElement.remove();
-        newElement = null;
+        regMsg.textContent = "OK";
+        regMsg.style.color = "lime";
     }
 });
 
 
-const form = document.getElementById("myForm");
-const formName = document.getElementById("formName");
-const email = document.getElementById("email");
-const errorMsg = document.getElementById("error");
+const prices = {
+    carrot: 1,
+    potato: 2,
+    apple: 3
+};
 
-form.addEventListener("submit", function (event) {
+const carrot = document.getElementById("carrot");
+const potato = document.getElementById("potato");
+const apple = document.getElementById("apple");
+const totalDiv = document.getElementById("total");
+const calcBtn = document.getElementById("calc");
 
-    let nameValue = formName.value.trim();
-    let emailValue = email.value.trim();
+calcBtn.addEventListener("click", function () {
 
-    errorMsg.textContent = "";
+    let total =
+        carrot.value * prices.carrot +
+        potato.value * prices.potato +
+        apple.value * prices.apple;
 
-    if (nameValue === "" || emailValue === "") {
-        event.preventDefault();
-        errorMsg.textContent = "Kļūda";
-    }
+    let discount = 0;
+
+    if (total >= 20) discount = 0.2;
+    else if (total >= 10) discount = 0.1;
+
+    total -= total * discount;
+
+    totalDiv.textContent =
+        `Summa: ${total.toFixed(2)} € (${discount * 100}% atlaide)`;
 });
-
-
-const pricePerItem = 50;
-
-const discounts = [
-    { min: 20, discount: 0.30 },
-    { min: 10, discount: 0.20 },
-    { min: 5, discount: 0.10 }
-];
-
-const quantityInput = document.getElementById("quantity");
-const button = document.getElementById("calcBtn");
-const result = document.getElementById("result");
-
-function calculatePrice() {
-
-    const quantity = Number(quantityInput.value);
-
-    if (!quantity || quantity <= 0) {
-        result.textContent = "Kļūda";
-        return;
-    }
-
-    let total = quantity * pricePerItem;
-    let appliedDiscount = 0;
-
-    for (let d of discounts) {
-        if (quantity >= d.min) {
-            appliedDiscount = d.discount;
-            break;
-        }
-    }
-
-    total -= total * appliedDiscount;
-
-    result.textContent =
-        `${total.toFixed(2)} € (${appliedDiscount * 100}%)`;
-}
-
-button.addEventListener("click", calculatePrice);
 
