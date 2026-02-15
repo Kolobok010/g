@@ -23,7 +23,7 @@ main {
     background: white;
     padding: 20px;
     border-radius: 12px;
-    width: 280px;
+    width: 300px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     text-align: center;
 }
@@ -37,7 +37,15 @@ input {
 button {
     padding: 8px 15px;
     margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #4e73df;
+    color: white;
     cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
 }
 
 #error {
