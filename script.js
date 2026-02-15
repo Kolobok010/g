@@ -1,5 +1,3 @@
-console.log("JS pieslēgts un darbojas");
-
 const text = document.getElementById("text");
 const input = document.getElementById("nameInput");
 const addBtn = document.getElementById("addBtn");
@@ -7,25 +5,22 @@ const removeBtn = document.getElementById("removeBtn");
 
 let newElement = null;
 
-function parbauditUnParadiTekstu(vards) {
-    if (vards === "") {
-        text.textContent = "Lūdzu, ievadi savu vārdu!";
-        text.style.color = "red";
+function updateText(value) {
+    if (value === "") {
+        text.textContent = "";
     } else {
-        text.textContent = "Sveiki, " + vards + "!";
-        text.style.color = "blue";
+        text.textContent = "Sveiki, " + value + "!";
     }
 }
 
 input.addEventListener("input", function () {
-    parbauditUnParadiTekstu(this.value);
+    updateText(this.value);
 });
 
 addBtn.addEventListener("click", function () {
     if (!newElement) {
         newElement = document.createElement("p");
-        newElement.textContent = "Šis ir dinamiski pievienots elements.";
-        newElement.style.color = "green";
+        newElement.textContent = "Elements";
         document.querySelector("main").appendChild(newElement);
     }
 });
@@ -52,25 +47,15 @@ form.addEventListener("submit", function (event) {
 
     if (nameValue === "" || emailValue === "") {
         event.preventDefault();
-        errorMsg.textContent = "Visi lauki jāaizpilda!";
-    }
-    else if (!emailValue.includes("@") || !emailValue.includes(".")) {
-        event.preventDefault();
-        errorMsg.textContent = "Nepareizs e-pasts!";
-    }
-    else if (nameValue.length < 2) {
-        event.preventDefault();
-        errorMsg.textContent = "Vārds pārāk īss!";
-    }
-    else {
-        alert("Forma veiksmīgi iesniegta!");
+        errorMsg.textContent = "Kļūda";
     }
 });
 
 
-const pricePerItem = 10;
+const pricePerItem = 50;
 
 const discounts = [
+    { min: 20, discount: 0.30 },
     { min: 10, discount: 0.20 },
     { min: 5, discount: 0.10 }
 ];
@@ -80,11 +65,11 @@ const button = document.getElementById("calcBtn");
 const result = document.getElementById("result");
 
 function calculatePrice() {
+
     const quantity = Number(quantityInput.value);
 
     if (!quantity || quantity <= 0) {
-        result.textContent = "Ievadi derīgu daudzumu!";
-        result.style.color = "red";
+        result.textContent = "Kļūda";
         return;
     }
 
@@ -98,11 +83,10 @@ function calculatePrice() {
         }
     }
 
-    total = total - (total * appliedDiscount);
+    total -= total * appliedDiscount;
 
-    result.style.color = "green";
     result.textContent =
-        `Kopējā cena: ${total.toFixed(2)} € (atlaide ${appliedDiscount * 100}%)`;
+        `${total.toFixed(2)} € (${appliedDiscount * 100}%)`;
 }
 
 button.addEventListener("click", calculatePrice);
