@@ -2,50 +2,52 @@
 <html lang="lv">
 <head>
     <meta charset="UTF-8">
-    <title>Mācību projekts</title>
+    <title>Mini veikals</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>Mācību projekts</h1>
+    <h1>Mini veikals</h1>
+
+    <form id="registerForm" class="register">
+        <input type="text" id="name" placeholder="Vārds">
+        <input type="email" id="mail" placeholder="E-pasts">
+        <button>Reģistrēties</button>
+        <span id="regMsg"></span>
+    </form>
 </header>
+
 
 <main>
 
-    <section class="box">
-        <h2>Teksta maiņa</h2>
-        <p id="text"></p>
-        <input type="text" id="nameInput">
-        <br><br>
-        <button id="addBtn">Pievienot</button>
-        <button id="removeBtn">Noņemt</button>
-    </section>
+    <section class="shop">
 
-    <section class="box">
-        <h2>Reģistrācija</h2>
-        <form id="myForm">
-            <input type="text" id="formName">
-            <input type="text" id="email">
-            <button type="submit">OK</button>
-            <p id="error"></p>
-        </form>
-    </section>
+        <div class="product">
+            <label>Burkāni (1€)</label>
+            <input type="number" id="carrot" min="0" value="0">
+        </div>
 
-    <section class="box">
-        <h2>Produkts</h2>
-        <input id="quantity" type="number" min="1">
-        <button id="calcBtn">Aprēķināt</button>
-        <div id="result" class="result"></div>
+        <div class="product">
+            <label>Kartupeļi (2€)</label>
+            <input type="number" id="potato" min="0" value="0">
+        </div>
+
+        <div class="product">
+            <label>Āboli (3€)</label>
+            <input type="number" id="apple" min="0" value="0">
+        </div>
+
+        <button id="calc">Aprēķināt summu</button>
+
+        <div id="total" class="total"></div>
+
     </section>
 
 </main>
 
-<footer>
-    <p>© 2026</p>
-</footer>
-
 <script src="script.js"></script>
 </body>
 </html>
+
 
